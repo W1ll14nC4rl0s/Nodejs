@@ -1,0 +1,36 @@
+{
+  "name": "SWAGGER",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000 ./src/testes/TestApi.js",
+    "test:prod": "cross-env NODE_ENV=prod npm t",
+    "start": "cross-env NODE_ENV=prod node ./src/api.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "boom": "^7.3.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "hapi-auth-jwt2": "^10.1.0",
+    "hapi-swagger": "^9.1.3",
+    "inert": "^5.1.3",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.20",
+    "pg": "^7.12.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.13",
+    "swagger-hapi": "^0.7.0",
+    "vision": "^5.4.4"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  }
+}
