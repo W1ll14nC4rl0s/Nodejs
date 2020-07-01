@@ -17,10 +17,10 @@ class MongoDb extends Crud{
 
     }
 
-    static connect(){
+    static async connect(){
         //console.log('MONGODB', process.env.MONGODB_URL)
        // mongoose.connect(process.env.MONGODB_URL,
-        mongoose.connect(process.env.MONGODB_URL,
+        await mongoose.connect(process.env.MONGODB_URL,
             {useUnifiedTopology: true, useNewUrlParser: true}, (error)=>{
                 if(!error) return;
                 console.log('Falha ao conectar', error)

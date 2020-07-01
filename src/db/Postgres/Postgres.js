@@ -23,22 +23,21 @@ class Postgres extends Crud{
     }
 
     static connect(){
-        const conn = new sequelize(
+        return new sequelize(
             process.env.POSTGRES_URL,
-            {
-                //host: 'localhost',
-                //dialect: 'postgres',
-                quoteIdentifiers: false,
-                operatorsAliases: 0,
-                logging: false,
-                ssl: process.env.SSL_DB,
-                dialectOptions:{
-                    ssl: process.env.SSL_DB
+                {
+                    //host: 'localhost',
+                    //dialect: 'postgres',
+                    quoteIdentifiers: false,
+                    operatorsAliases: 0,
+                    logging: false,
+                    ssl: process.env.SSL_DB,
+                    dialectOptions:{
+                        ssl: process.env.SSL_DB
+                    }
                 }
-            }
-        )
-
-        return conn;
+            )
+        //console.log('CONNECTION', conn)
     }
 
     async isConnect(){

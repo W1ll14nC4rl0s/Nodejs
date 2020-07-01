@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 10000 ./src/testes/TestApi.js",
-    "test:prod": "cross-env NODE_ENV=prod npm t",
-    "start": "cross-env NODE_ENV=prod node ./src/api.js"
+    "preinstall": "cross-env NODE_ENV=prod npm i -g pm2",
+    "postinstall": "cross-env NODE_ENV=prod npm run prod",
+    "test": "nyc --reporter=html mocha --timeout 20000 --exit TestApi.js",
+    "prod": "cross-env NODE_ENV=prod npm t",
+    "start": "cross-env NODE_ENV=prod pm2-runtime api.js"
   },
   "keywords": [],
   "author": "",
@@ -24,13 +26,16 @@
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.20",
+    "nodemon": "^2.0.4",
     "pg": "^7.12.0",
     "pg-hstore": "^2.3.3",
+    "pm2": "^4.4.0",
     "sequelize": "^5.21.13",
     "swagger-hapi": "^0.7.0",
     "vision": "^5.4.4"
   },
   "devDependencies": {
-    "mocha": "^8.0.1"
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0"
   }
 }
