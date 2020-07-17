@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const Crud = require('../strategy/interface/InterfaceCrud');
-const sequelize = require('sequelize');
+//const sequelize = require('sequelize');
 
 class Postgres extends Crud{
     
@@ -10,17 +10,22 @@ class Postgres extends Crud{
         this._model = schema;
     }
 
-    static async Connect(){
+    static Connect(){
         return new Sequelize(
-            'herois',
-            'admin',
-            'admin',
+            process.env.POSTGRES_URL,
         {
-            host: 'localhost',
-            dialect: 'postgres',
+            //host: 'localhost',
+            //dialect: 'postgres',
             quoteIdentifiers: false,
             operatorsAliases: 0,
-            //logging: false
+            logging: false,
+            ssl: process.env.SSL_DB,
+            dialectOptions:{
+                ssl:{
+                    require: process.env.SSL_DB,
+                    rejectUnauthorized: false
+                } 
+            }
         })
     }
 

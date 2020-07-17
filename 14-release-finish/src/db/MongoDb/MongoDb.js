@@ -18,7 +18,7 @@ class MongoDb extends Crud{
 
     static async Connect(db){
         const dataBase = db ? db : 'herois'
-        await Mongoose.connect(`mongodb://williancarlos:12345@localhost:27017/${dataBase}`,
+        await Mongoose.connect(process.env.MONGODB_URL,
          {useUnifiedTopology: true, useNewUrlParser:true}, (error)=>{
              if(!error)return;
              console.log('Falha na conexão', error)

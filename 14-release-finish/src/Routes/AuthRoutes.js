@@ -91,7 +91,7 @@ class AuthRoutes extends Base{
                 const{email, password} = request.payload
                 const [validUser] = await this._dataBase.searchUser(email)
                 //console.log('BUSCA_USER', validUser)
-                if(validUser.length === 0){
+                if(!validUser){
                     return{
                         message: Boom.preconditionFailed('usuario ou senha invalidos')
                     }

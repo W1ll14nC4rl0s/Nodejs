@@ -1,3 +1,20 @@
+
+const {config} = require('dotenv')
+const {join} = require('path')
+const {ok} = require('assert')
+
+const env = process.env.NODE_ENV || 'dev'
+
+ok(env === 'prod' || env === 'dev' , 'Parametro env inválido')
+
+const configPath = join(__dirname, './config', `.env.${env}`)
+
+console.log('Arquives Config', configPath)
+
+config({
+    path: configPath
+})
+
 const Hapi = require('@hapi/hapi')
 const HapiSwagger = require('hapi-swagger')
 const Hapijwt = require('hapi-auth-jwt2')
@@ -37,8 +54,7 @@ const init = async ()=>{
     const DbMongo = new Context(new MongoDb(connMongodb, schemaAuth))
    
     const Server = Hapi.Server({
-        port: 5000,
-        host:'localhost'
+        port: process.env.PORT || 6000    
     })
 
     const Swagger = {
@@ -71,7 +87,7 @@ const init = async ()=>{
                 email : dados.email,
                 _id : dados._id
              })
-            //console.log('REQUEST', result)
+            //console.log('RESULT', result)
             if(!result)return{isValid : false}
 
             return{

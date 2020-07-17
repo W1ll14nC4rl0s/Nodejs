@@ -21,8 +21,8 @@ describe('Suite de Testes API', function() {
             method: 'POST',
             url:'/login',
             payload:{
-                email:'willian2@willian.com',
-                password: "102030"
+                email:'willian@carlos.com',
+                password: "12345"
             }
         })
         token = JSON.parse(KEY.payload)

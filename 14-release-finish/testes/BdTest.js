@@ -128,5 +128,5 @@ describe('Testes Banco de Dados', function(){
     //     }
     //     const result = await DbMongo.searchUser(obj.email)
     //     console.log('RESULT', result)
-    // })
+    // }) 
 })

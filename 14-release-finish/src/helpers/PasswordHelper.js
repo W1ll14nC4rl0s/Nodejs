@@ -4,7 +4,7 @@ const{promisify} = require('util')
 
 const HashAsync = promisify(Bcrypt.hash)
 const CompareAsync = promisify(Bcrypt.compare)
-const SALT = 3
+const SALT = parseInt(process.env.SALT_PWD)
 
 class PasswordHelper {
     
